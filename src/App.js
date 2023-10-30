@@ -33,7 +33,7 @@ import ReferralPage from 'views/Referral';
 import AdminRefund from 'views/Admin/Refund';
 import AdminRefundList from 'views/Admin/Refund/RefundList';
 import AdminExpiredAsset from 'views/Admin/Refund/ExpiredAsset';
-
+import CoinCreateForm from 'views/TokenViewTest/CoinCreateForm';
 BigNumber.config({
   EXPONENTIAL_AT: 1000,
   DECIMAL_PLACES: 80,
@@ -48,6 +48,9 @@ function App() {
       <Switch>
         <Route path="/TokenView" exact>
           <TokenView />
+        </Route>
+        <Route path="/TokenViewTest/CoinCreateForm" exact>
+          <CoinCreateForm />
         </Route>
         <Route path="/" exact>
           <HomePage />

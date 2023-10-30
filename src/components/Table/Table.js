@@ -20,7 +20,7 @@ const Table = ({
 }) => {
   const _data = React.useMemo(() => data, [data]);
   const _columns = React.useMemo(() => columns, [columns]);
-
+  console.log('this is rows', _data);
   const { getTableProps, getTableBodyProps, headerGroups, prepareRow, rows, visibleColumns } = useTable({
     columns: _columns || [],
     data: _data || [],
