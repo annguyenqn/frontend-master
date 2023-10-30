@@ -27,8 +27,6 @@ const Navbar = () => {
     { name: 'Bất động sản', href: '/land', current: false },
     { name: 'Giao dịch P2P', href: '/trade-p2p', current: false },
     { name: 'Hỏi đáp (FAQ)', href: '/faq', current: false },
-    { name: 'TokenView', href: '/TokenView', current: false },
-
   ];
 
   const userNavigation = [

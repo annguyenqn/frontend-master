@@ -248,6 +248,7 @@ const AdminLand = () => {
               totalItems={landsData?.totalItems}
               onChangePage={handleChangePage}
             />
+            <Table isLoading={isLoading} columns={tableColumns} data={landsData?.data} />
           </div>
         </div>
       </Container>

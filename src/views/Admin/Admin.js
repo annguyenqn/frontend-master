@@ -30,6 +30,12 @@ const MENU_LIST = [
     title: { name: 'Hoàn tiền', link: '/admin/refund' },
     children: [{ id: 'expired-asset', name: 'Dự án hết hạn', link: '/admin/refund/expired-asset' }],
   },
+  {
+    id: 'coin',
+    width: 'w-full sm:w-1/2',
+    title: { name: 'Quản lý coin', link: '/TokenView' },
+    // children: [{ id: 'expired-asset', name: 'Dự án hết hạn', link: '/admin/refund/expired-asset' }],
+  },
   // {
   //   id: 'settingConfig',
   //   width: 'w-full',
