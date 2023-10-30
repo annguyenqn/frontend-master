@@ -1,0 +1,17 @@
+.gallary-carousel {
+  div.carousel-btn-bg::before {
+    content: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-image: linear-gradient(90deg, rgba(250, 250, 250, 0) 0%, var(--color-white-3) 79.37%);
+  }
+}
+
+// render pdf
+.gallary-carousel {
+  & canvas.react-pdf__Page__canvas {
+    margin: auto;
+  }
+}

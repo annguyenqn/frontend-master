@@ -1,0 +1,43 @@
+.datepicker-custom {
+  & input {
+    width: 100%;
+  }
+  .react-datepicker {
+    &-popper {
+      z-index: 2;
+    }
+    &-time__caption {
+      display: none;
+    }
+    &__navigation {
+      top: 22px;
+    }
+    &__header {
+      background: white;
+      border: none;
+      .react-datepicker__current-month {
+        padding: 1rem 0;
+      }
+    }
+    &__day {
+      &--keyboard-selected {
+        background: none;
+        color: inherit;
+      }
+      &--today {
+        background-color: var(--color-gray-2);
+        border-radius: 5px;
+      }
+      &--outside-month {
+        opacity: 0.3;
+      }
+      &--weekend {
+        color: var(--color-primary);
+      }
+      &--selected {
+        background: var(--color-primary);
+        color: var(--color-white-1);
+      }
+    }
+  }
+}

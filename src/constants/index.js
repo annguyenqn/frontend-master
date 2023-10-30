@@ -1,0 +1,38 @@
+export const NetworkContextName = 'NETWORK';
+export const networkLocalStorageKey = 'network';
+export const connectorLocalStorageKey = 'active';
+
+export const TOKENS = [
+  { id: 'ethereum', symbol: 'WETH.e', contract: '0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB' },
+  // { id: 'avalanche-2', symbol: 'AVAX', contract: '0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7' },
+  // { id: 'pangolin', symbol: 'PNG', contract: '0x60781C2586D68229fde47564546784ab3fACA982' },
+  // { id: 'benqi', symbol: 'BENQI', contract: '0x8729438EB15e2C8B576fCc6AeCdA6A148776C0F5' },
+  // { id: 'avalaunch', symbol: 'XAVA', contract: '0xd1c3f94DE7e5B45fa4eDBBA472491a9f4B166FC4' },
+  // { id: 'penguin-finance', symbol: 'PEFI', contract: '0xe896CDeaAC9615145c0cA09C8Cd5C25bced6384c' },
+  // { id: 'snowball-token', symbol: 'SNOB', contract: '0xC38f41A296A4493Ff429F1238e030924A1542e50' },
+  // { id: 'yield-yak', symbol: 'YAK', contract: '0x59414b3089ce2AF0010e7523Dea7E2b35d776ec7' },
+  // { id: 'sherpa', symbol: 'SHERPA', contract: '0xa5E59761eBD4436fa4d20E1A27cBa29FB2471Fc6' },
+  // { id: 'dai', symbol: 'DAI.e', contract: '0xd586E7F844cEa2F87f50152665BCbc2C279D8d70' },
+  // { id: 'bitcoin', symbol: 'WBTC.e', contract: '0x50b7545627a5162F82A992c33b87aDc75187B218' },
+  // { id: 'tether', symbol: 'USDT.e', contract: '0xc7198437980c041c805A1EDcbA50c1Ce5db95118' },
+  // { id: 'uniswap', symbol: 'UNI.e', contract: '0x8eBAf22B6F053dFFeaf46f4Dd9eFA95D89ba8580' },
+  // { id: 'chainlink', symbol: 'LINK.e', contract: '0x5947BB275c521040051D82396192181b413227A3' },
+  // { id: 'sushi', symbol: 'SUSHI.e', contract: '0x37B608519F91f70F2EeB0e5Ed9AF4061722e4F76' },
+  // { id: 'aave', symbol: 'AAVE.e', contract: '0x63a72806098Bd3D9520cC43356dD78afe5D386D9' },
+  // { id: 'yearn-finance', symbol: 'YFI.e', contract: '0x9eAaC1B23d935365bD7b542Fe22cEEe2922f52dc' },
+  // { id: 'usd-coin', symbol: 'USDC.e', contract: '0xA7D7079b0FEaD91F3e65f86E8915Cb59c1a4C664' },
+  // { id: 'joe', symbol: 'JOE', contract: '0x6e84a6216eA6dACC71eE8E6b0a5B7322EEbC0fDd' },
+  // { id: 'cycle-token', symbol: 'CYCLE', contract: '0x81440C939f2C1E34fc7048E518a637205A632a74' },
+  // { id: 'avaware', symbol: 'AVE', contract: '0x78ea17559B3D2CF85a7F9C2C704eda119Db5E6dE' },
+  // { id: 'tundra-token', symbol: 'TUNDRA', contract: '0x21c5402C3B7d40C89Cc472C9dF5dD7E51BbAb1b1' },
+  // { id: 'verso', symbol: 'VSO', contract: '0x846D50248BAf8b7ceAA9d9B53BFd12d7D7FBB25a' },
+  // { id: 'elk-finance', symbol: 'ELK', contract: '0xE1C110E1B1b4A1deD0cAf3E42BfBdbB7b5d7cE1C' },
+  // { id: 'gondola-finance', symbol: 'GDL', contract: '0xD606199557c8Ab6F4Cc70bD03FaCc96ca576f142' },
+  // { id: 'lydia-finance', symbol: 'LYD', contract: '0x4C9B4E1AC6F24CdE3660D5E4Ef1eBF77C710C084' },
+  // { id: 'canary', symbol: 'CNR', contract: '0x8D88e48465F30Acfb8daC0b3E35c9D6D7d36abaf' },
+  // { id: 'yetiswap', symbol: 'YTS', contract: '0x488F73cddDA1DE3664775fFd91623637383D6404' },
+  // { id: 'defi-yield-protocol', symbol: 'DYP', contract: '0x961C8c0B1aaD0c0b10a51FeF6a867E3091BCef17' },
+  // { id: 'avme', symbol: 'AVME', contract: '0x1ECd47FF4d9598f89721A2866BFEb99505a413Ed' },
+  // { id: 'spore', symbol: 'SPORE', contract: '0x6e7f5C0b9f4432716bDd0a77a3601291b9D9e985' },
+  // { id: 'allianceblock', symbol: 'WALBT', contract: '0x9E037dE681CaFA6E661e6108eD9c2bd1AA567Ecd' },
+];

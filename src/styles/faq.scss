@@ -1,0 +1,7 @@
+.icon-answer-container {
+  transition: transform 300ms ease;
+}
+
+.icon-answer-container.collapse-answer {
+  transform: rotate(-180deg);
+}

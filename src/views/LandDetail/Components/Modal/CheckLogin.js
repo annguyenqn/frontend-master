@@ -1,0 +1,193 @@
+import PropTypes from 'prop-types';
+import Modal from 'components/Modal/Modal';
+import ButtonRound from 'components/Button/ButtonRound';
+import { Controller, useForm } from 'react-hook-form';
+import { validateEmail } from 'utils/index';
+import { showToastError, showToastSuccess } from 'components/CustomToast/CustomToast';
+import { useState } from 'react';
+import { FiEye, FiEyeOff, FiLock, FiMail, FiUnlock } from 'react-icons/fi';
+import { useHistory } from 'react-router-dom';
+import { USER_LOGIN } from 'utils/storage';
+import usersApi from 'api/usersApi';
+import { setUserLogin } from 'store/userLogin';
+import { useDispatch } from 'react-redux';
+
+const CheckLoginModal = ({ isShow, setShow, onLoginSuccess }) => {
+  const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = useState(false);
+  const history = useHistory();
+
+  const handleClose = () => {
+    setShow(false);
+  };
+
+  const handleForgotPassword = () => {
+    history.push('/forgot-password');
+  };
+
+  const {
+    handleSubmit,
+    control,
+    // watch,
+    formState: { errors, isSubmitting },
+  } = useForm();
+
+  const FORM_INPUT = [
+    {
+      id: 'email',
+      name: 'email',
+      label: 'Email',
+      rules: {
+        required: 'Nhập thông tin',
+        validate: {
+          checkValie: (v) => validateEmail(v) || 'Thông tin này có thể không phải là địa chỉ email',
+        },
+      },
+      className: 'mb-4',
+      classNameInput: `py-4 pl-16 bg-transparent rounded-xl w-full border focus:outline-none ${
+        errors?.['email']?.message ? 'border-red-400' : ''
+      }`,
+      placeholder: 'Địa chỉ email',
+      type: 'text',
+      defaultValue: '',
+      prependIcon: <FiMail />,
+    },
+    {
+      id: 'password',
+      name: 'password',
+      label: 'Mật khẩu',
+      rules: {
+        required: 'Nhập thông tin',
+      },
+      className: 'mb-4',
+      classNameInput: `py-4 pl-16 bg-transparent rounded-xl w-full border focus:outline-none ${
+        errors?.['password']?.message ? 'border-red-400' : ''
+      }`,
+      placeholder: 'Mật khẩu',
+      type: showPassword ? 'text' : 'password',
+      defaultValue: '',
+      prependIcon: showPassword ? <FiUnlock /> : <FiLock />,
+      appendIcon: (
+        <div
+          onClick={() => {
+            setShowPassword(!showPassword);
+          }}
+        >
+          {showPassword ? <FiEyeOff /> : <FiEye />}
+        </div>
+      ),
+    },
+  ];
+
+  const onHandleSubmit = async (data) => {
+    try {
+      const res = await usersApi.login(data);
+      USER_LOGIN.set(res?.token);
+      showToastSuccess(
+        'Đăng nhập thành công',
+        <>
+          Xin chào <span className="capitalize">{res.fullName}</span>
+        </>,
+      );
+      await onLoginSuccess(true);
+      await dispatch(setUserLogin(res));
+    } catch (error) {
+      console.error(error);
+      showToastError(
+        'Lỗi',
+        error?.response?.status === 422 || error?.response?.status === 403
+          ? 'Vui lòng kiểm tra lại email hoặc mật khẩu'
+          : 'Đăng nhập thất bại',
+      );
+    }
+  };
+
+  return (
+    <Modal open={isShow} onClose={handleClose} className="">
+      <h5 className="px-8 py-4 text-xl border-b md:text-2xl border-black-2">Bạn cần phải đăng nhập trước</h5>
+      <form autoComplete="off" onSubmit={handleSubmit(onHandleSubmit)}>
+        <div className="px-4 sm:px-12 py-9 animate-fade-in">
+          {FORM_INPUT.map((item, index) => (
+            <div key={`register-input-${index}`} className={`${item.className} relative `}>
+              <div className="absolute top-0 py-4 text-2xl left-6">{item?.prependIcon}</div>
+              <div className="absolute top-0 py-4 text-2xl right-6">{item?.appendIcon}</div>
+              <div className={item.className}>
+                <Controller
+                  control={control}
+                  rules={item.rules}
+                  render={({ field: { onChange, onBlur, value } }) =>
+                    item.id === 'password' || item.id === 're-password' || item.id === 'phone' ? (
+                      <input
+                        id={item.id}
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={(e) => {
+                          onChange(e.target.value.trim());
+                        }}
+                        className={item.classNameInput}
+                        placeholder={item.placeholder}
+                        type={item.type}
+                        disabled={item?.disabled}
+                      />
+                    ) : (
+                      <input
+                        id={item.id}
+                        onBlur={onBlur}
+                        value={value}
+                        onChange={onChange}
+                        className={item.classNameInput}
+                        placeholder={item.placeholder}
+                        type={item.type || 'text'}
+                        min={0}
+                        disabled={item?.disabled}
+                      />
+                    )
+                  }
+                  name={item.name}
+                  autoComplete="off"
+                  defaultValue={item.defaultValue}
+                />
+                {errors?.[item.name]?.message && (
+                  <span className="text-xs text-red-400 ">* {errors?.[item.name]?.message || 'Invalid'} </span>
+                )}
+              </div>
+            </div>
+          ))}
+          <ButtonRound
+            className="w-full py-3 font-bold border-0 bg-primary text-black-2"
+            type="submit"
+            disabled={Object.keys(errors).length > 0 || isSubmitting}
+          >
+            Đăng nhập
+          </ButtonRound>
+          <div className="flex">
+            <ButtonRound
+              className="mx-auto mt-4 text-gray-400 underline bg-transparent border-0"
+              type="button"
+              onClick={handleForgotPassword}
+            >
+              Quên mật khẩu?
+            </ButtonRound>
+            <ButtonRound
+              className="mx-auto mt-4 text-gray-400 underline bg-transparent border-0"
+              type="button"
+              onClick={() => {
+                history.push('/register');
+              }}
+            >
+              Đăng ký
+            </ButtonRound>
+          </div>
+        </div>
+      </form>
+    </Modal>
+  );
+};
+
+CheckLoginModal.propTypes = {
+  isShow: PropTypes.bool,
+  setShow: PropTypes.func,
+  onLoginSuccess: PropTypes.func,
+};
+
+export default CheckLoginModal;

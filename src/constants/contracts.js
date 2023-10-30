@@ -1,0 +1,10 @@
+const address = {
+  defily: '0xD675fF2B0ff139E14F86D87b7a6049ca7C66d76e',
+  masterChef: '0x0245a1f57Ee84b55Cf489Eb5F3d27355014e57f8',
+  wKai: '0xAF984E23EAA3E7967F3C5E007fbe397D8566D23d',
+  dragon: '0x18f4f7A1fa6F2c93d40d4Fd83c67E93B88d3a0b1',
+  treasury: '0xDd6a2C70f540BbccF53708884B58F7538baa9494',
+  multicall: '0x95C7e4AA82381dB726d0303B12DA4A001548f6D4',
+};
+
+export default address;
